@@ -45,3 +45,10 @@ The component `MemoizedConversationListComponent` was created to display a possi
 
 ### Error handling
 If by chance a user goes into a conversation outside of the conversation list (example: `.../conversation/999`, where there is not a conversation with ID = 999) or if a fetch has a faulty response, some components handle this by displaying an error message using the `ErrorComponent` component. This component is generic and only has one prop `text` to help display the desired error message.
+
+# Future work
+In this section I explain what could be improved.
+### Styles/Css
+There could be generic and global classes to help read and create new components.
+### Testing
+Create new tests for the API
