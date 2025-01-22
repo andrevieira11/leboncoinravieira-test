@@ -35,3 +35,13 @@ Since some of the data is not being refreshed very often there are some componen
 The testing done was mainly used to see if the components showed the error messages when expected.
 
 ### Accessability
+This solution uses a few methods to improve the accessability of the site:
+- Some HTML elements, eg, `<Link>`, `<ul>`, `<li>` and `<button>`
+- Usage of `tabIndex` to help users navigate the website with the TAB key
+- If there were usage of images in the solution the `alt` featured would be used since it would help in the description of images
+
+### Performance
+The component `MemoizedConversationListComponent` was created to display a possible usage of a "cached" component. Since that component is not being updated several times, it can be memoized and improve the performance of the website. 
+
+### Error handling
+If by chance a user goes into a conversation outside of the conversation list (example: `.../conversation/999`, where there is not a conversation with ID = 999) or if a fetch has a faulty response, some components handle this by displaying an error message using the `ErrorComponent` component. This component is generic and only has one prop `text` to help display the desired error message.
