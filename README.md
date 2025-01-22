@@ -1,71 +1,26 @@
-# Context :
+# Leboncoin test - André Vieira :
 
-At leboncoin, our users can share messages about a transaction, or ask for informations about any products.
+I'm using this repository to show my solution to the Leboncoin test.
 
-Your job is to create the interface to consult those messages.
-The interface needs to work on both desktop & mobile devices.
+# Start project :
 
-In addition to your code, a README explaining your thought process and your choices would be appreciated.
+To run the project please follow these steps:
 
-# Exercise :
+- Go to the project folder
+- Open a terminal and run `npm run install`
+- Run `npm run dev`
+- Open another terminal in the same location
+- Run `npm run start-server`
+- Open your browser and insert `http://localhost:3000/`
 
-- Display a list of all the conversations
-- Allow the user to select a conversation
-  - Inside the conversation, there is a list of all the messages between these two users.
-  - As a user, you can type and send new messages in this conversation
+# Walking through the project:
 
-**As your application can be used by millions of users, make sure to provide some robust safety guards.**
+### Home:
+This is the main page where the user can see all the conversations where it is either the sender or the reciever. Each item is a button to check the conversation's messages ([Conversation Details](#Conversation-details)).
+The user can also create a new conversation ([New Conversation](#New-Conversation))!
 
-### Sketches :
+### Conversation Details:
+The conversation details page shows the recepient nickname, the timestamp for the last message sent and the list of messages exchanged between these two users. At the bottom of the page the user can also send another message to add to the selected conversation.
 
-Obvisouly, it is up to you to make something nice and pretty, you are free to design it the way you like. The sketches are here to give you an idea on how it should look.
-
-<details>
-  <summary>Click to see the sketches</summary>
-  
-Mobile list :
-
-![](./sketches/list-mobile.jpg)
-
-Desktop list :
-
-![](./sketches/list-desktop.jpg)
-
-Mobile conversation :
-
-![](./sketches/conv-mobile.jpg)
-
-Desktop conversation :
-
-![](./sketches/conv-desktop.jpg)
-
-</details>
-
-### API :
-
-You can find the API swagger file in `docs/api-swagger.yaml`.
-
-For a better readibility, you can view it on [https://leboncoin.tech/frontend-technical-test/](https://leboncoin.tech/frontend-technical-test/).
-
----
-
-## Bonus 1 :
-
-We provide some conversation samples, but can you improve the app so the user can now create new conversations ?
-
-## Bonus 2 :
-
-Our infrastructure is a bit shaky.. Sometimes the servers are crashing. “It’s not you, it’s me”, but maybe you can display something nice to warn the user and handle it gracefully.
-
-## Do you want to make the app even better ?
-
-Feel free to make as many improvements as you like.
-We love creativity and technical challenges.
-
-If you are out of ideas, here are some thoughts :
-
-- As we want to reach our users anywhere, we need to make sure the app is performing well. What can you do to make it really fast ?
-
-- Our goal is to support everybody in the country, including people with disabilities. As a good citizen and a good developer, can you make sure the app is accessible for everyone ?
-
-- We all love to relax after a hard day’s work. It would be a shame if we didn’t feel confident enough about the upcoming automatic deployment. Are you sure everything has been tested thoroughly ?
+### New Conversation:
+In this simple page the user can choose another user to create a new entry in the conversation array.
