@@ -1,12 +1,14 @@
 import { Conversation } from '../types/conversation';
 import Link from 'next/link';
 import { getRecipientName } from '../utils/getConversationInfo';
+import ErrorComponent from './ErrorComponent';
 
 export const ConversationList = ({ conversations }: { conversations: Conversation[] }) => {
     return (
         <div className="flex flex-col w-full lg:w-1/4 space-y-4">
             {conversations?.map((conversation) => {
                 const recipientName = getRecipientName(conversation);
+                if (!recipientName || recipientName.length <= 0) return <ErrorComponent text='Error: recipient name not found' />;
                 return (
                     <Link
                         href={`/conversation/${conversation.id}`}
@@ -18,7 +20,7 @@ export const ConversationList = ({ conversations }: { conversations: Conversatio
                     >
                         {/* Recipient profile picture */}
                         <div className='flex w-8 h-8 rounded-full bg-blue-200 justify-center items-center'>
-                            {recipientName[0]}
+                            {!!recipientName ? recipientName[0] : ''}
                         </div>
                         {/* Recipient name and last message date */}
                         <div className='flex flex-col space-y-2'>

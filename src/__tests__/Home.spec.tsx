@@ -10,8 +10,8 @@ describe("Home", () => {
   })
   it("should render a list of conversations", () => {
     const conversations = [
-      { id: 1, lastMessageTimestamp: 0, recipientId: 1, recipientNickname: "Recipient1", senderId: 0, senderNickname: "Sender" },
-      { id: 2, lastMessageTimestamp: 0, recipientId: 2, recipientNickname: "Recipient2", senderId: 0, senderNickname: "Sender" }
+      { id: 1, lastMessageTimestamp: 0, recipientId: 2, recipientNickname: "Recipient1", senderId: 1, senderNickname: "Sender" },
+      { id: 2, lastMessageTimestamp: 0, recipientId: 3, recipientNickname: "Recipient2", senderId: 1, senderNickname: "Sender" }
     ]
     render(<Home conversations={conversations} />)
     expect(screen.getByText(/Recipient1/)).toBeInTheDocument()

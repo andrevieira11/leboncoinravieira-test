@@ -4,7 +4,9 @@ import ConversationPage from "../pages/conversation/[conversationId]"
 const mockConversationDetails = {
   id: 1,
   senderId: 1,
+  senderNickname: "Alice",
   recipientId: 2,
+  recipientNickname: "Bob",
   lastMessageTimestamp: new Date().toISOString(),
 }
 
@@ -25,53 +27,32 @@ const mockInitialMessages = [
   },
 ]
 
-const mockUsers = [
-  {
-    id: 1,
-    nickname: "Alice",
-  },
-  {
-    id: 2,
-    nickname: "Bob",
-  },
-]
-
 describe("Home", () => {
   it("should render error page", () => {
-    render(<ConversationPage conversationId={undefined} conversationDetails={undefined} initialMessages={undefined} users={undefined} />)
+    render(<ConversationPage conversationId={undefined} conversationDetails={undefined} initialMessages={undefined} />)
     expect(
       screen.getByText(/There was an error retrieving the conversation. Try again later!/)
     ).toBeInTheDocument()
   })
 
   it("should render error page with conversation Id", () => {
-    render(<ConversationPage conversationId={1} conversationDetails={undefined} initialMessages={undefined} users={undefined} />)
+    render(<ConversationPage conversationId={1} conversationDetails={undefined} initialMessages={undefined} />)
     expect(
       screen.getByText(/There was an error retrieving the conversation. Try again later!/)
     ).toBeInTheDocument()
   })
 
   it("should render error page with initialMessages", () => {
-    render(<ConversationPage conversationId={undefined} conversationDetails={undefined} initialMessages={mockInitialMessages} users={undefined} />)
+    render(<ConversationPage conversationId={undefined} conversationDetails={undefined} initialMessages={mockInitialMessages} />)
     expect(
       screen.getByText(/There was an error retrieving the conversation. Try again later!/)
     ).toBeInTheDocument()
   })
 
-  it("should render error page with initialMessages", () => {
-    render(<ConversationPage conversationId={undefined} conversationDetails={undefined} initialMessages={undefined} users={mockUsers} />)
-    expect(
-      screen.getByText(/There was an error retrieving the conversation. Try again later!/)
-    ).toBeInTheDocument()
-  })
-
-  it("should render error page with initialMessages", () => {
-    render(<ConversationPage conversationId={1} conversationDetails={mockConversationDetails} initialMessages={mockInitialMessages} users={mockUsers} />)
+  it("should render correctly", () => {
+    render(<ConversationPage conversationId={1} conversationDetails={mockConversationDetails} initialMessages={mockInitialMessages} />)
     expect(
       screen.getByText(/Last message:/)
-    ).toBeInTheDocument()
-    expect(
-      screen.getByText(/Bob/)
     ).toBeInTheDocument()
     expect(
       screen.getByText(/Hello/)

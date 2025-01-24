@@ -1,8 +1,11 @@
 import { User } from "../../types/user";
 import { getLoggedUserId } from "../../utils/getLoggedUserInfo";
+import ErrorComponent from "../ErrorComponent";
 
 export const MessageBubble = ({ message, recipientName }) => {
     const isMessageFromLoggedUser = getLoggedUserId() === message.authorId;
+
+    if (!recipientName) return <ErrorComponent text='Error: recipient name not found' />;
 
     return isMessageFromLoggedUser ? (
         <div className='flex flex-row w-full justify-end'>
@@ -15,7 +18,7 @@ export const MessageBubble = ({ message, recipientName }) => {
     ) : (
         <div className='flex w-full justify-start space-x-2'>
             <div className="flex self-end w-8 h-8 bg-red-300 rounded-full justify-center items-center">
-                {recipientName[0]}
+                {!recipientName ? recipientName[0] : ''}
             </div>
             <div className='flex flex-col max-w-[50%]'>
                 <div className='font-bold'>{recipientName}</div>
