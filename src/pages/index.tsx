@@ -4,6 +4,7 @@ import { fetchConversations, fetchUsers } from '../utils/fetchAPI';
 import Link from 'next/link';
 import { memo } from 'react';
 import { Conversation } from '../types/conversation';
+import { getLoggedUserId } from '../utils/getLoggedUserInfo';
 
 export default function Home({ conversations }) {
   const MemoizedConversationListComponent = memo(({ conversations }: { conversations: Conversation[] }) => {
@@ -42,6 +43,7 @@ export default function Home({ conversations }) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const conversations = await fetchConversations();
+  const conversationWithoutSelf = conversations.filter((conversation: Conversation) => conversation.id !== getLoggedUserId());
 
-  return { props: { conversations } };
+  return { props: { conversations: conversationWithoutSelf } };
 };
