@@ -28,16 +28,20 @@ In this simple page the user can choose another user to create a new entry in th
 
 
 # Some logic behind it
+### Mobile version
+The website is responsive so it makes it viable for most resolutions. To even better handle mobile versions, some styles adjust, for example, padding may become smaller or disappear to better use the space on screen.
+
 ### Server-side
 Since some of the data is not being refreshed very often there are some components that use server-side rendering (SSR). To use this, I use `getServerSideProps` and retrieve some data. For example, in the [Home](#Home) component the conversations are fetched in the server side and the browser then displays it.
 
 ### Testing
-The testing done was mainly used to see if the components showed the error messages when expected.
+The testing done was mainly used to see if the components showed the error messages when expected. It was also used `data-testid` to better test some components.
 
 ### Accessability
 This solution uses a few methods to improve the accessability of the site:
 - Some HTML elements, eg, `<Link>`, `<ul>`, `<li>` and `<button>`
 - Usage of `tabIndex` to help users navigate the website with the TAB key
+- `aria-label` was used in the project to help name elements.
 - If there were usage of images in the solution the `alt` featured would be used since it would help in the description of images
 
 ### Performance

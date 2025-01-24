@@ -43,7 +43,6 @@ export default function Home({ conversations }) {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const conversations = await fetchConversations();
-  const conversationWithoutSelf = conversations.filter((conversation: Conversation) => conversation.id !== getLoggedUserId());
 
-  return { props: { conversations: conversationWithoutSelf } };
+  return { props: { conversations } };
 };
